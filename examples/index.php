@@ -66,7 +66,7 @@ function randomType(): string
 // Adds random chars to a string
 function insertRandomChars(string $str, int $numChars): string
 {
-    $chars = str_split('.- _:,;/@');
+    $chars = ['.', '-', ' ', '_', ':', ',', ';', '/', '@'];
     $n_chars = count($chars);
     $len = strlen($str);
 
