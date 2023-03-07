@@ -1,7 +1,7 @@
 NISS
 ==============
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/helip/niss.svg?style=flat-square)](https://packagist.org/packages/helip/niss) [![Build Status](https://img.shields.io/travis/helip/niss-validator/master.svg?style=flat-square)](https://travis-ci.org/helip/niss) [![Quality Score](https://img.shields.io/scrutinizer/g/helip/niss.svg?style=flat-square)](https://scrutinizer-ci.com/g/helip/niss) [![Total Downloads](https://img.shields.io/packagist/dt/helip/niss.svg?style=flat-square)](https://packagist.org/packages/helip/niss)![PHP 7.4](https://img.shields.io/badge/PHP-7.4-green)
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/helip/niss.svg?style=flat-square)](https://packagist.org/packages/helip/niss) [![Build Status](https://scrutinizer-ci.com/g/helinp/helip-niss/badges/build.png?b=master)](https://scrutinizer-ci.com/g/helinp/helip-niss/build-status/master) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/helinp/helip-niss/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/helinp/helip-niss/?branch=master) [![Total Downloads](https://img.shields.io/packagist/dt/helip/niss.svg?style=flat-square)](https://packagist.org/packages/helip/niss) ![PHP 7.4](https://img.shields.io/badge/PHP-7.4-green)
 
 Helip/NISS is a PHP library that provides tools for generating and validating Belgian National Identification Numbers (NISS). 
 The library includes a class called NISSGenerator for generating valid NISS numbers and providing relevant information, as well as three helper classes for validating NISS numbers. The library adheres to the specifications outlined in legal references related to the composition and validation of NISS numbers in Belgium.
