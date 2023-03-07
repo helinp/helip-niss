@@ -24,6 +24,7 @@ final class NISS
     public const TYPE_BIS = 'BIS';
     public const TYPE_TER = 'TER';
     public const TYPE_UNOFFICIAL = 'UNOFFICIAL'; // Special type for generated NISS
+    public const TYPE_UNKNOWN = 'UNKNOWN';
 
     public const GENDER_MALE = 'M';
     public const GENDER_FEMALE = 'F';

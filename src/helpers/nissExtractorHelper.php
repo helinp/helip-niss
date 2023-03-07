@@ -80,13 +80,12 @@ class NISSExtractorHelper
 
     /**
      * Calculate type of NISS number
-     * Returns false if type is unknown
      *
      * @param string $niss
      *
-     * @return string|false
+     * @return string
      */
-    public static function calculateType($niss): string|false
+    public static function calculateType($niss): string
     {
         // extract month
         $month = substr($niss, 2, 2);
@@ -109,7 +108,7 @@ class NISSExtractorHelper
         } elseif ($month > 0 + 80 && $month < 13 + 80) {
             return NISS::TYPE_UNOFFICIAL;
         } else {
-            return false;
+            return NISS::TYPE_UNKNOWN;
         }
     }
 
