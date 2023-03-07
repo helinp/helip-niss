@@ -67,11 +67,12 @@ function randomType(): string
 function insertRandomChars(string $str, int $numChars): string
 {
     $chars = str_split('.- _:,;/@');
+    $n_chars = count($chars);
     $len = strlen($str);
 
     for ($i = 0; $i < $numChars; $i++) {
         $pos = mt_rand(0, $len);
-        $char = $chars[mt_rand(0, count($chars) - 1)];
+        $char = $chars[mt_rand(0, $n_chars - 1)];
         $str = substr_replace($str, $char, $pos, 0);
     }
 
