@@ -12,7 +12,7 @@ use InvalidArgumentException;
  *
  * @version 1.0.0
  * @author Pierre Hélin
- * @license GPL-3.0
+ * @license LGPL-3.0-only
  * @package NISS
  */
 class NISSValidatorHelper

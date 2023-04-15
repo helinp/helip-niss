@@ -13,7 +13,7 @@ use InvalidArgumentException;
  * and National Identification Numbers BIS and TER
  *
  * @version 1.0.0
- * @license GPL-3.0
+ * @license LGPL-3.0-only
  * @author Pierre Hélin
  * @package NISS
  */
