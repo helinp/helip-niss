@@ -95,5 +95,5 @@ Credits
 
 License
 -------
-![gplv3-only](https://www.gnu.org/graphics/gplv3-88x31.png)
-GPL-3.0. Please see [License File](https://www.gnu.org/licenses/gpl-3.0.txt) for more information.
+![lgplv3-only](https://www.gnu.org/graphics/lgplv3-88x31.png)
+GPL-3.0. Please see [License File](https://www.gnu.org/licenses/lgpl-3.0.txt) for more information.
