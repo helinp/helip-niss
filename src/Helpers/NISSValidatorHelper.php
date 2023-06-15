@@ -43,7 +43,7 @@ class NISSValidatorHelper
     {
         // Check that the number is exactly 11 digits long
         if (strlen($niss) !== 11) {
-            throw new InvalidArgumentException("NISS must be 11 digits long");
+            return false;
         }
 
         // Get the niss without the control number (first 9 digits)
@@ -61,7 +61,7 @@ class NISSValidatorHelper
         $expectedCheckDigitsWithTwo = intval(97 - (intval($numberWithTwo) % 97));
 
         if ($controlNumber != $expectedCheckDigits && $controlNumber != $expectedCheckDigitsWithTwo) {
-            throw new InvalidArgumentException("NISS control number is invalid");
+            return false;
         }
 
         // The number is valid
