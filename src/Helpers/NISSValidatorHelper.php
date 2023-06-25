@@ -46,6 +46,11 @@ class NISSValidatorHelper
             return false;
         }
 
+        // Check that the number is not 00000000000
+        if($niss === '00000000000') {
+            throw new InvalidArgumentException("NISS cannot be 00000000000");
+        }
+
         // Get the niss without the control number (first 9 digits)
         $numberWithoutControlNumber = substr($niss, 0, 9);
 
