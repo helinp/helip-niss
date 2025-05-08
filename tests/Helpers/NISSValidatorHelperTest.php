@@ -1,4 +1,7 @@
 <?php
+declare(strict_types=1);
+
+namespace Tests\Helpers;
 
 use Helip\NISS\Helpers\NISSValidatorHelper;
 use InvalidArgumentException;
