@@ -18,39 +18,40 @@ Getting Started
 ---------------
 ```php
 <?php
-// Include Composer autoloader
+
 require_once 'vendor/autoload.php';
 
+use Helip\NISS\Helpers\NISSValidatorHelper;
+use Helip\NISS\Exception\InvalidNissExceptionInterface;
 use Helip\NISS\NISS;
 
-// Get a niss
-$rawNiss = 'yymmdd-xxxx-cc';
+$rawNiss = '13820404235';
 
-// Validation
-$validation = true;
+// --- Option 1: Simple validation (boolean result) ---
+if (NISSValidatorHelper::isValid($rawNiss)) {
+    echo "NISS is valid";
+} else {
+    echo "NISS is invalid";
+}
+
+// --- Option 2: Strict validation (with exceptions) ---
 try {
-    NISSValidator::isValid($rawNiss);
-} catch (Exception $e) {
-    // Handle error
-    echo $e->getMessage();
-    $validation = false;
-    // ...
+    NISSValidatorHelper::assertValid($rawNiss); // throws on failure
+    echo "NISS passed strict validation ✔️";
+} catch (InvalidNissExceptionInterface $e) {
+    echo "Validation error: " . $e->getMessage(); // Custom exception type
 }
 
-if ($validation) {
-    // Instantiates a Niss object
-    $niss = new NISS($niss);
+// Instantiates a Niss object
+$niss = new NISS($rawNiss);
     
-    // Get infos
-    $birthdate = $niss->getBirthdate($niss);
-    $gender = $niss->getGender()
-    $type = $niss->getType();
-    $formatted = $niss->getFormattedNiss();
-    // ...
-    
-    // Do stuff
-    // ...
-}
+// Get infos
+$birthdate = $niss->getBirthdate();
+$gender = $niss->getGender()
+$type = $niss->getType();
+$formatted = $niss->getFormattedNiss();
+// ...
+
 ```
 
 Other example of use can be found at [/examples/index.php](/examples/index.php)
