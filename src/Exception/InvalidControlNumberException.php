@@ -2,4 +2,4 @@
 
 namespace Helip\NISS\Exception;
 
-class InvalidControlNumberException extends InvalidNissExceptionInterface {}
+class InvalidControlNumberException extends InvalidNissException {}
