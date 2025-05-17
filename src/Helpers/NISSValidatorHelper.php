@@ -2,18 +2,15 @@
 
 namespace Helip\NISS\Helpers;
 
-use InvalidArgumentException;
+use Helip\NISS\Exception\InvalidControlNumberException;
+use Helip\NISS\Exception\InvalidFormatException;
+use Helip\NISS\Exception\InvalidNissExceptionInterface;
 
 /**
  * NISSValidatorHelper
  *
  * This class provides static methods for validating Belgian National Identification
  * Numbers (NISS), including NISS BIS and TER.
- *
- * @version 1.0.0
- * @author Pierre Hélin
- * @license LGPL-3.0-only
- * @package NISS
  */
 class NISSValidatorHelper
 {
@@ -30,7 +27,7 @@ class NISSValidatorHelper
         try {
 
             self::assertValid($niss);
-        } catch (InvalidArgumentException $e) {
+        } catch (InvalidNissExceptionInterface $e) {
             return false;
         }
         return true;
@@ -45,13 +42,10 @@ class NISSValidatorHelper
      */
     public static function assertValid(string $niss): void
     {
-        // Clean the NISS number
         $niss = self::clean($niss);
 
-        // Check the format of the NISS number
         self::checkFormat($niss);
-
-        // Check the control number of the NISS number
+        self::checkControlNumberRange($niss);
         self::checkControlNumber($niss);
     }
 
@@ -70,14 +64,12 @@ class NISSValidatorHelper
 
     private static function checkFormat(string $niss): void
     {
-        // Check that the number is exactly 11 digits long
         if (strlen($niss) !== 11) {
-            throw new InvalidArgumentException('NISS must be 11 digits long');
+            throw new InvalidFormatException('NISS must be 11 digits long');
         }
 
-        // Check that the number is not 00000000000
         if ($niss === '00000000000') {
-            throw new InvalidArgumentException('NISS cannot be 00000000000');
+            throw new InvalidFormatException('NISS cannot be 00000000000');
         }
     }
 
@@ -94,11 +86,21 @@ class NISSValidatorHelper
 
         // Get the niss whith a 2 in front of the number (born after 1999)
         $numberWithTwo = '2' . $numberWithoutControlNumber;
+
         // Check that the check digits are between 0 and 97 (born after 1999)
         $expectedCheckDigitsWithTwo = (int) (97 - (int) $numberWithTwo % 97);
 
         if ($controlNumber != $expectedCheckDigits && $controlNumber != $expectedCheckDigitsWithTwo) {
-            throw new InvalidArgumentException('Invalid control number');
+            throw new InvalidControlNumberException();
+        }
+    }
+
+    private static function checkControlNumberRange(string $niss): void
+    {
+        // Check that the control number is between 0 and 97
+        $controlNumber = (int) substr($niss, 9, 2);
+        if ($controlNumber < 0 || $controlNumber > 97) {
+            throw new InvalidControlNumberException();
         }
     }
 }
